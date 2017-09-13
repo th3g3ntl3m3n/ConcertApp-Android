@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/add_user"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+
+        <Spinner
+            android:id="@+id/types"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:entries="@array/types"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+
+        <EditText
+            android:id="@+id/full_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+
+        <Spinner
+            android:id="@+id/areas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+
+        <Spinner
+            android:id="@+id/puskesmas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:background="@color/silver"
+            android:padding="10dp"
+            android:textColor="@color/midblue"
+            android:textColorHint="@color/midblue" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/emrald"
+        android:text="@string/add_user" />
+</LinearLayout>

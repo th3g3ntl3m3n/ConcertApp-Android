@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">ConcertApp</string>
+    <string name="save">SAVE</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account">No account yet? Create one</string>
+    <string name="concert_nlogin">CONCERT LOGIN</string>
+    <string name="blank_data">You Must Login to view further details</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="support">Support</string>
+    <string name="tnc">Terms and Conditions</string>
+    <string name="about">About</string>
+    <string name="author">th3g3ntl3m3n</string>
+    <string name="name">Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="add_user">Add User</string>
+    <string name="area">Area</string>
+    <string name="add">add</string>
+    <string name="area_name">Area Name</string>
+
+    <string-array name="month_names">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
+    <string-array name="types">
+        <item>Employee</item>
+        <item>Manager</item>
+    </string-array>
+
+    <string-array name="puskesmas">
+        <item>RATAHAN</item>
+        <item>MOLOMPAR</item>
+        <item>TOMBATU</item>
+        <item>TOULUAAN</item>
+        <item>BELANG</item>
+        <item>RATATOTOK</item>
+        <item>PUSOMAEN</item>
+        <item>TOWUNTU</item>
+        <item>BASAAN</item>
+        <item>MOLOMPAR B</item>
+        <item>TAMBELANG</item>
+        <item>SILIAN</item>
+    </string-array>
+
+
+    <string-array name="clinic_names">
+        <item>CAKUPAN PELAYANAN ANTENATAL</item>
+        <item>CAKUPAN PERSALINAN NIFAS</item>
+        <item>SARANA YANKES</item>
+        <item>KEMATIAN MATERNAL DAN NEONATAL</item>
+        <item>ANTENATAL INTEGRASI TERKINI</item>
+        <item>INTEGRASI PROGRAM</item>
+        <item>PELAKSANAAN KELAS IBU HAMIL</item>
+        <item>CAKUPAN KELUARGA BERENCANA</item>
+        <item>CAKUPAN PELAYANAN PENANGGULANGAN KEKERASAN TERHADAP PEREMPUAN</item>
+    </string-array>
+
+</resources>

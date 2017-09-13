@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/fillReport"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_border_box"
+            android:elevation="15dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/edit" />
+
+        <ImageButton
+            android:id="@+id/viewReport"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_border_box"
+            android:elevation="15dp"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/view" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/mapView"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_border_box"
+            android:elevation="15dp"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/map" />
+
+    </LinearLayout>
+</LinearLayout>

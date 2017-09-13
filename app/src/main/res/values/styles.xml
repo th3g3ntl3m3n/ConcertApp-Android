@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/carror</item>
+        <item name="colorPrimaryDark">@color/carror</item>
+        <item name="colorAccent">@color/silver</item>
+        <item name="android:windowBackground">@color/concrete</item>
+    </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="colorPrimaryDark">@color/carror</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+    <style name="MySwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/emrald</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/midblue</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">@color/midblue</item>
+    </style>
+
+</resources>

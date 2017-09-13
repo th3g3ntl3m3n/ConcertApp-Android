@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loadingContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#aa333333"
+    android:clickable="false">
+
+    <ImageView
+        android:id="@+id/loadingImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:scaleType="center"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:src="@drawable/logo2" />
+</FrameLayout>
