@@ -1,11 +1,17 @@
 package th3g3ntl3m3n.concertapp.data;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import th3g3ntl3m3n.concertapp.R;
 
 /**
  * Created by th3g3ntl3m3n on 12/8/17.
@@ -24,11 +30,19 @@ public class Constants {
     public static final int LOGINFRAGMENT = 1;
     public static final int ACCOUNTFRAGMENT = 2;
 
-    public static final int FRONTACTIVITY = 0;
-    public static final int EDITACTIVITY = 1;
-    public static final int DETAILACTIVITY = 2;
-    public static final int MAPVIEWACTIVITY = 3;
-    public static final int VIEWREPORTACTIVITY = 4;
+    public static final int FRONTACTIVITYE = 0;
+    public static final int EDITACTIVITYE = 1;
+    public static final int DETAILACTIVITYE = 2;
+    public static final int VIEWACTIVITYE = 3;
+    public static final int VIEWDETAILACTIVITYE = 4;
+
+    public static final int MAPVIEWACTIVITYE = 5;
+    public static final int MAPVIEWM = 9;
+
+    public static final int FRONTACTIVITYM = 6;
+    public static final int VIEWREPORTACTIVITYM = 7;
+    public static final int DETAILREPORTM = 8;
+    public static final int DEEPDETAILM = 10;
 
     public static final int SETTINGACCOUNTACTIVITY = 0;
     public static final int SETTINGBRANCHACTIVITY = 1;
@@ -47,6 +61,7 @@ public class Constants {
     private static final String POSITION = "position";
     private static final String AREANAME = "AREANAME";
     private static final String PUSKESMAS = "PUSKESMAS";
+    private static final String BRANCH = "BRANCH";
 
     public static boolean isUserLoggedIn(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHAREDFILENAME, Context.MODE_PRIVATE);
@@ -129,6 +144,20 @@ public class Constants {
         return sharedPreferences.getString(PUSKESMAS, "NULL");
     }
 
+    public static String getBranchName(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHAREDFILENAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(BRANCH, "NULL");
+    }
+
+    public static void setBranchName(Context context, String name) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHAREDFILENAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(BRANCH, name);
+        editor.apply();
+    }
+
+
+
     public static HashMap<String, ArrayList<String>> getSY() {
         HashMap<String, ArrayList<String>> mapSY = new HashMap<>();
 
@@ -151,6 +180,31 @@ public class Constants {
         mapSY.put("JUMLAH PUSKESMAS", tempList);
 
         return mapSY;
+    }
+
+    public static AlertDialog showExitDialog(final Context context, final Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.DialogTheme);
+        builder.setMessage("Do you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        activity.finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+            }
+        });
+        return alert;
     }
 
 //    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

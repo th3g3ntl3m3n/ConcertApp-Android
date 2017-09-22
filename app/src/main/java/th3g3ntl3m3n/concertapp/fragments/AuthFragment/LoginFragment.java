@@ -22,10 +22,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import th3g3ntl3m3n.concertapp.R;
 import th3g3ntl3m3n.concertapp.RestClient;
+import th3g3ntl3m3n.concertapp.ShareFragments.LoadingFragment;
 import th3g3ntl3m3n.concertapp.data.Constants;
 import th3g3ntl3m3n.concertapp.data.POJOResponse;
 import th3g3ntl3m3n.concertapp.interfaces.FragmentPageListener;
-import th3g3ntl3m3n.concertapp.loadingscreen.LoadingFragment;
 
 /**
  * Created by ram on 9/8/17.

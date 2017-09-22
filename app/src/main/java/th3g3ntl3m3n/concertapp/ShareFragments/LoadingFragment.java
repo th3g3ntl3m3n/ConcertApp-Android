@@ -1,4 +1,4 @@
-package th3g3ntl3m3n.concertapp.loadingscreen;
+package th3g3ntl3m3n.concertapp.ShareFragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

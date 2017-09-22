@@ -68,8 +68,12 @@ public class SettingAccountAddFragment extends Fragment {
                     if (name.equals("Manager")) {
                         areas.setVisibility(View.VISIBLE);
                         puskesmas.setVisibility(View.GONE);
-                    } else {
+                    } else if (name.equals("Employee")) {
                         puskesmas.setVisibility(View.VISIBLE);
+                        areas.setVisibility(View.VISIBLE);
+                    } else {
+                        puskesmas.setVisibility(View.GONE);
+                        areas.setVisibility(View.GONE);
                     }
                     ArrayAdapter<String> adapterOfSpinner = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>(dataValuesMap.keySet()));
                     adapterOfSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

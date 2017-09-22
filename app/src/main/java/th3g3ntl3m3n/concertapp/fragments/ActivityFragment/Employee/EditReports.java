@@ -1,4 +1,4 @@
-package th3g3ntl3m3n.concertapp.fragments.ActivityFragment;
+package th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,8 +31,9 @@ public class EditReports extends Fragment implements SpinnerListener {
     private RecyclerView.LayoutManager mLayoutManager;
     private String spinnerValue;
     private SpinnerListener spinnerListener;
-
+    private int userType;
     public EditReports() {
+
     }
 
     public static Fragment newInstance(FragmentPageListener fragmentPageListener) {
@@ -49,7 +50,7 @@ public class EditReports extends Fragment implements SpinnerListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_layout, container, false);
-
+        userType = Constants.getUserType(getActivity());
         final Spinner spinner = rootView.findViewById(R.id.spinnerView);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.month_names, R.layout.custom_spinner_row);
@@ -81,7 +82,7 @@ public class EditReports extends Fragment implements SpinnerListener {
     }
 
     public void backPressed() {
-        listener.onSwitchToNextFragmentActivity(Constants.FRONTACTIVITY);
+        listener.onSwitchToNextFragmentActivity(Constants.FRONTACTIVITYE);
     }
 
     @Override

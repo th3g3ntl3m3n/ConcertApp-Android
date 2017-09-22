@@ -1,4 +1,4 @@
-package th3g3ntl3m3n.concertapp.fragments.ActivityFragment;
+package th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -42,10 +42,6 @@ public class ActivitiesDetail extends Fragment {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
-    public ActivitiesDetail() {
-        Log.d(TAG, "ActivitiesDetail: " + ActivitiesDetail.class.getCanonicalName());
-    }
-
     public static Fragment newInstance(FragmentPageListener fragmentPageListener) {
         listener = fragmentPageListener;
         return new ActivitiesDetail();
@@ -59,7 +55,7 @@ public class ActivitiesDetail extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_detail_layout, container, false);
+        final View rootView = inflater.inflate(R.layout.activity_detail_layout, container, false);
         recyclerView = rootView.findViewById(R.id.accountDetailList);
         adapter = new AccountDetailAdapter(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
@@ -71,7 +67,6 @@ public class ActivitiesDetail extends Fragment {
         (rootView.findViewById(R.id.saveButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String[] dataValues = listener1.getData();
                 int p = Constants.getPositionFromPrefs(getActivity());
                 int i = 0;
@@ -80,11 +75,14 @@ public class ActivitiesDetail extends Fragment {
                     data.put(key, dataValues[i]);
                     i += 1;
                 }
-                final String areaName = Constants.getAreaName(getActivity());
+                String areaName = Constants.getAreaName(getActivity());
+                String pusk = Constants.getPuskName(getActivity());
+
                 if (areaName.equals("NULL")) {
                     Snackbar.make(view, "AREA IS NULL", Snackbar.LENGTH_LONG).show();
                     return;
                 }
+
                 String jsonString = gson.toJson(data);
                 Log.d(TAG, "onClick: " + jsonString);
                 Map<String, String> extraData = listener.getClinicData();
@@ -92,11 +90,14 @@ public class ActivitiesDetail extends Fragment {
                 String emp_name = Constants.getUsername(getActivity());
                 String monthName = extraData.get("month");
                 String clinic_no = extraData.get("clinic");
-                Call<DemoUser> makeCall = restClient.getApiService().insertReport(new Demo(emp_name, monthName, jsonString, clinic_no, areaName));
+                Call<DemoUser> makeCall = restClient
+                        .getApiService()
+                        .insertReport(new Demo(emp_name, monthName, jsonString, clinic_no, areaName, pusk));
                 makeCall.enqueue(new Callback<DemoUser>() {
                     @Override
                     public void onResponse(Call<DemoUser> call, @NonNull Response<DemoUser> response) {
                         Log.d("TAG", "onResponse: save" + response.body().toString());
+                        Snackbar.make(rootView, response.body().getMessage(), Snackbar.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -110,8 +111,7 @@ public class ActivitiesDetail extends Fragment {
     }
 
     public void backPressed() {
-        listener.onSwitchToNextFragmentActivity(Constants.EDITACTIVITY);
+        listener.onSwitchToNextFragmentActivity(Constants.EDITACTIVITYE);
     }
-
 
 }

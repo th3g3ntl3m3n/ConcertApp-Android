@@ -1,4 +1,4 @@
-package th3g3ntl3m3n.concertapp.fragments.ActivityFragment;
+package th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -32,21 +32,21 @@ public class FrontActivity extends Fragment {
         rootView.findViewById(R.id.fillReport).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onSwitchToNextFragmentActivity(Constants.EDITACTIVITY);
+                listener.onSwitchToNextFragmentActivity(Constants.EDITACTIVITYE);
             }
         });
 
         rootView.findViewById(R.id.viewReport).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onSwitchToNextFragmentActivity(Constants.VIEWREPORTACTIVITY);
+                listener.onSwitchToNextFragmentActivity(Constants.VIEWACTIVITYE);
             }
         });
 
         rootView.findViewById(R.id.mapView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onSwitchToNextFragmentActivity(Constants.MAPVIEWACTIVITY);
+                listener.onSwitchToNextFragmentActivity(Constants.MAPVIEWACTIVITYE);
             }
         });
 

@@ -5,14 +5,19 @@ package th3g3ntl3m3n.concertapp.data;
  */
 
 public class Demo {
-    String emp_name, month, report, clinic_no, area;
+    private String emp_name, month, report, clinic_no, area, puskesmas;
 
-    public Demo(String emp_name, String month, String report, String clinic_no, String area) {
+    public Demo(String area) {
+        this.area = area;
+    }
+
+    public Demo(String emp_name, String month, String report, String clinic_no, String area, String puskesmas) {
         this.emp_name = emp_name;
         this.month = month;
         this.report = report;
         this.clinic_no = clinic_no;
         this.area = area;
+        this.puskesmas = puskesmas;
     }
 
     public String getEmp_name() {
@@ -55,14 +60,11 @@ public class Demo {
         this.area = area;
     }
 
-    @Override
-    public String toString() {
-        return "Demo{" +
-                "emp_name='" + emp_name + '\'' +
-                ", month='" + month + '\'' +
-                ", report='" + report + '\'' +
-                ", clinic_no='" + clinic_no + '\'' +
-                ", area='" + area + '\'' +
-                '}';
+    public String getPuskesmas() {
+        return puskesmas;
+    }
+
+    public void setPuskesmas(String puskesmas) {
+        this.puskesmas = puskesmas;
     }
 }

@@ -14,6 +14,7 @@ import th3g3ntl3m3n.concertapp.data.Demo;
 import th3g3ntl3m3n.concertapp.data.DemoUser;
 import th3g3ntl3m3n.concertapp.data.POJOResponse;
 import th3g3ntl3m3n.concertapp.data.Puskesmas;
+import th3g3ntl3m3n.concertapp.data.ReportsPOJO;
 import th3g3ntl3m3n.concertapp.data.User;
 
 /**
@@ -55,4 +56,19 @@ public interface ConcertAppApi {
 
     @GET("/concert-webservices/webservices/getAreaPusk.php")
     Call<ArrayList<DemoUser>> getAllThing();
+
+    @POST("/concert-webservices/webservices/getreports.php")
+    Call<ArrayList<ReportsPOJO>> getReports(@Query("area") String area);
+
+    @POST("/concert-webservices/webservices/getreports.php")
+    Call<ArrayList<ReportsPOJO>> getReportsWithPusk(@Query("puskesmas") String puskesmas);
+
+    @POST("/concert-webservices/webservices/getreports.php")
+    Call<ArrayList<ReportsPOJO>> getEmpReport(@Query("name") String name);
+
+    @POST("/concert-webservices/webservices/addclinictype.php")
+    Call<DemoUser> addClinicType(@Body DemoUser demo);
+
+    @GET("/concert-webservices/webservices/addclinictype.php")
+    Call<ArrayList<DemoUser>> getAllClinicTypes();
 }

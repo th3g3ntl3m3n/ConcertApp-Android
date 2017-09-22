@@ -1,11 +1,14 @@
 package th3g3ntl3m3n.concertapp;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,11 +18,17 @@ import java.util.List;
 import java.util.Map;
 
 import th3g3ntl3m3n.concertapp.data.Constants;
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.ActivitiesDetail;
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.EditReports;
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.FrontActivity;
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.MapFragment;
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.ViewReports;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.ActivitiesDetail;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.EditReports;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.FrontActivity;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.MapFragment;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.ReportDetail;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.ViewReports;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager.DeepDetailReportManager;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager.DetailReportManager;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager.FrontActivityManager;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager.MapViewManager;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager.ViewReportManager;
 import th3g3ntl3m3n.concertapp.fragments.AuthFragment.AccountFragment;
 import th3g3ntl3m3n.concertapp.fragments.AuthFragment.LoginFragment;
 import th3g3ntl3m3n.concertapp.fragments.AuthFragment.SignupFragment;
@@ -40,6 +49,7 @@ public class MainDataActivity extends AppCompatActivity {
     private ViewPagerAdapter adapter;
     private Fragment baseAuthFragment;
     private FragmentPageListener listener;
+    private int userType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +72,6 @@ public class MainDataActivity extends AppCompatActivity {
         } else {
             baseAuthFragment = LoginFragment.newInstance(listener);
         }
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -101,8 +110,40 @@ public class MainDataActivity extends AppCompatActivity {
             ((SignupFragment) adapter.getItem(1)).backPressed();
         } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof ViewReports) {
             ((ViewReports) adapter.getItem(0)).backPressed();
+        } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof ViewReportManager) {
+            ((ViewReportManager) adapter.getItem(0)).backPressed();
+        } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof ReportDetail) {
+            ((ReportDetail) adapter.getItem(0)).backPressed();
+        } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof MapViewManager) {
+            ((MapViewManager) adapter.getItem(0)).backPressed();
+        } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof DeepDetailReportManager) {
+            ((DeepDetailReportManager) adapter.getItem(0)).backPressed();
+        } else if (viewPager.getCurrentItem() == 0 && adapter.getItem(0) instanceof DetailReportManager) {
+            ((DetailReportManager) adapter.getItem(0)).backPressed();
         } else {
-            super.onBackPressed();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.DialogTheme);
+            builder.setMessage("Do you really want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            final AlertDialog alert = builder.create();
+            alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface dialogInterface) {
+                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                }
+            });
+            alert.show();
+//            super.onBackPressed();
         }
     }
 
@@ -116,6 +157,7 @@ public class MainDataActivity extends AppCompatActivity {
         ViewPagerAdapter(FragmentManager manager) {
             super(manager);
             fragmentManager = manager;
+
         }
 
         @Override
@@ -131,11 +173,23 @@ public class MainDataActivity extends AppCompatActivity {
 
             } else if (position == 0) {
 
-                if (fragmentAtPos0 == null) fragmentAtPos0 = FrontActivity.newInstance(listener);
-                if (fragmentAtPos0 instanceof BlankFragment)
+                userType = Constants.getUserType(MainDataActivity.this);
+                if (fragmentAtPos0 == null) {
                     fragmentAtPos0 = FrontActivity.newInstance(listener);
-                if (!Constants.isUserLoggedIn(MainDataActivity.this))
+                    if (userType == Constants.MANAGER) {
+                        fragmentAtPos0 = FrontActivityManager.newInstance(listener);
+                    }
+                }
+                if (fragmentAtPos0 instanceof BlankFragment) {
+                    fragmentAtPos0 = FrontActivity.newInstance(listener);
+                    if (userType == Constants.MANAGER) {
+                        fragmentAtPos0 = FrontActivityManager.newInstance(listener);
+                    }
+                }
+                if (!Constants.isUserLoggedIn(MainDataActivity.this)) {
                     fragmentAtPos0 = new BlankFragment();
+                }
+                Log.d(TAG, "getItem: " + fragmentAtPos0);
                 return fragmentAtPos0;
 
             } else if (position == 1) {
@@ -219,16 +273,29 @@ public class MainDataActivity extends AppCompatActivity {
 
             public void onSwitchToNextFragmentActivity(int activityCode) {
                 fragmentManager.beginTransaction().remove(fragmentAtPos0).commit();
-                if (activityCode == Constants.FRONTACTIVITY) {
+                if (activityCode == Constants.FRONTACTIVITYE) {
                     fragmentAtPos0 = FrontActivity.newInstance(listener);
-                } else if (activityCode == Constants.EDITACTIVITY) {
+                } else if (activityCode == Constants.EDITACTIVITYE) {
                     fragmentAtPos0 = EditReports.newInstance(listener);
-                } else if (activityCode == Constants.DETAILACTIVITY) {
+                } else if (activityCode == Constants.DETAILACTIVITYE) {
                     fragmentAtPos0 = ActivitiesDetail.newInstance(listener);
-                } else if (activityCode == Constants.VIEWREPORTACTIVITY) {
+                } else if (activityCode == Constants.VIEWACTIVITYE) {
                     fragmentAtPos0 = ViewReports.newInstance(listener);
-                } else if (activityCode == Constants.MAPVIEWACTIVITY) {
+                } else if (activityCode == Constants.VIEWDETAILACTIVITYE) {
+                    fragmentAtPos0 = ReportDetail.newInstance(listener);
+                } else if (activityCode == Constants.MAPVIEWACTIVITYE) {
                     fragmentAtPos0 = MapFragment.newInstance(listener);
+                } else if (activityCode == Constants.VIEWREPORTACTIVITYM) {
+                    fragmentAtPos0 = ViewReportManager.newInstance(listener);
+                } else if (activityCode == Constants.FRONTACTIVITYM) {
+                    fragmentAtPos0 = FrontActivityManager.newInstance(listener);
+                    Log.d(TAG, "onSwitchToNextFragmentActivity: " + fragmentAtPos0);
+                } else if (activityCode == Constants.DETAILREPORTM) {
+                    fragmentAtPos0 = DetailReportManager.newInstance(listener);
+                } else if (activityCode == Constants.MAPVIEWM) {
+                    fragmentAtPos0 = MapViewManager.newInstance(listener);
+                } else if (activityCode == Constants.DEEPDETAILM) {
+                    fragmentAtPos0 = DeepDetailReportManager.newInstance(listener);
                 }
                 notifyDataSetChanged();
             }

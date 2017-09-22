@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/viewReport"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_border_box"
+        android:elevation="15dp"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/view" />
+
+    <ImageButton
+        android:id="@+id/mapView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_border_box"
+        android:elevation="15dp"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/map" />
 
 </LinearLayout>

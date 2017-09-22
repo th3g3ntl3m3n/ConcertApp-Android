@@ -1,4 +1,4 @@
-package th3g3ntl3m3n.concertapp.fragments.ActivityFragment;
+package th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Manager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,16 +13,15 @@ import th3g3ntl3m3n.concertapp.data.Constants;
 import th3g3ntl3m3n.concertapp.interfaces.FragmentPageListener;
 
 /**
- * Created by th3g3ntl3m3n on 18/8/17.
+ * Created by th3g3ntl3m3n on 14/9/17.
  */
 
-public class MapFragment extends Fragment {
-
+public class MapViewManager extends Fragment {
     static FragmentPageListener listener;
 
     public static Fragment newInstance(FragmentPageListener fragmentPageListener) {
         listener = fragmentPageListener;
-        return new MapFragment();
+        return new MapViewManager();
     }
 
     @Nullable
@@ -46,6 +45,6 @@ public class MapFragment extends Fragment {
     }
 
     public void backPressed() {
-        listener.onSwitchToNextFragmentActivity(Constants.FRONTACTIVITY);
+        listener.onSwitchToNextFragmentActivity(Constants.FRONTACTIVITYM);
     }
 }

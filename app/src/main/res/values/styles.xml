@@ -25,4 +25,8 @@
         <item name="android:colorForeground">@color/midblue</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/carror</item>
+    </style>
+
 </resources>

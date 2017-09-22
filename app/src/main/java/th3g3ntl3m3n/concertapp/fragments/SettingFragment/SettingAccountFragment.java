@@ -17,11 +17,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import th3g3ntl3m3n.concertapp.R;
 import th3g3ntl3m3n.concertapp.RestClient;
+import th3g3ntl3m3n.concertapp.ShareFragments.LoadingFragment;
 import th3g3ntl3m3n.concertapp.adapters.SettingAccountFragmentAdapter;
 import th3g3ntl3m3n.concertapp.data.Constants;
 import th3g3ntl3m3n.concertapp.data.DemoUser;
 import th3g3ntl3m3n.concertapp.interfaces.FragmentPageListener;
-import th3g3ntl3m3n.concertapp.loadingscreen.LoadingFragment;
 
 /**
  * Created by th3g3ntl3m3n on 23/8/17.

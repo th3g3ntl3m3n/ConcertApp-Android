@@ -56,7 +56,7 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.ViewHolder
                 dataClinic.put("month", monthName);
                 dataClinic.put("clinic", String.valueOf(holder.getAdapterPosition()));
                 listenerForAdapter.setClinicData(dataClinic);
-                listenerForAdapter.onSwitchToNextFragmentActivity(Constants.DETAILACTIVITY);
+                listenerForAdapter.onSwitchToNextFragmentActivity(Constants.DETAILACTIVITYE);
                 Log.d(TAG, "onClick: " + Constants.getPositionFromPrefs(context));
             }
         });
@@ -67,10 +67,10 @@ public class SampleAdapter extends RecyclerView.Adapter<SampleAdapter.ViewHolder
         return arrayData.length;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mtext;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView mtext;
 
-        public ViewHolder(TextView view) {
+        ViewHolder(TextView view) {
             super(view);
             mtext = view;
         }

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.EditReports;
+import th3g3ntl3m3n.concertapp.fragments.ActivityFragment.Employee.EditReports;
 import th3g3ntl3m3n.concertapp.fragments.SettingFragment.Setting;
 
 /**
